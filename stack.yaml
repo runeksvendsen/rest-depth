@@ -21,8 +21,14 @@ resolver: lts-9.20
 # will not be run. This is useful for tweaking upstream packages.
 packages:
 - .
-- ../orderbook
-- ../crypto-venues
+- location:
+    git: https://github.com/runeksvendsen/orderbook.git
+    commit: 1bdfd4b2a7b54246a116206f959f11749d82ad09
+  extra-dep: true
+- location:
+    git: https://github.com/runeksvendsen/crypto-venues.git
+    commit: c4720a5398a9b14985856866ae34d85b0149ac56
+  extra-dep: true
 
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
