@@ -32,9 +32,14 @@ Parameters:
 * **market** (market name returned by `list_markets`)
 * **slippage** (target slippage, in percent)
 
-Example response:
+Example response (query path: `/bitfinex/slippage_sell/BTC-USD-btcusd/1.0`):
 ```javascript
-{"orders_exhausted":false,"slippage_percent":1,"init_price":8288,"base_qty":398.7980059267673,"quote_qty":3272185.494389837}
+{ "orders_exhausted":false       // did we use up all available orders? 
+, "slippage_percent":1           // slippage, in percent 
+, "init_price":8288              // price of the first matched order
+, "base_qty":398.7980059267673   // base-currency quantity ("BTC" in this example)
+, "quote_qty":3272185.494389837  // quote-currency quantity ("USD" in this example)
+}
 ```
 
 ### `/:venue/slippage_buy/:market/:slippage`
@@ -45,9 +50,14 @@ Parameters:
 * **market** (market name returned by `list_markets`)
 * **slippage** (target slippage, in percent)
 
-Example response:
+Example response (query path: `/bitfinex/slippage_buy/BTC-USD-btcusd/1.0`:
 ```javascript
-{"orders_exhausted":false,"slippage_percent":1,"init_price":8288.1,"base_qty":626.7236472364041,"quote_qty":5246291.74326664}
+{ "orders_exhausted":false
+, "slippage_percent":1
+, "init_price":8288.1
+, "base_qty":626.7236472364041
+, "quote_qty":5246291.74326664
+}
 ```
   
 ## Example queries
