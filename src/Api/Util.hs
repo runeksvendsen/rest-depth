@@ -29,19 +29,3 @@ toServantErr Req.DecodeFailure{..} = let err = "Decode error: " ++ decodeError i
 toServantErr ex = let err = show ex in
    SS.err500 { SS.errBody = toS err, SS.errReasonPhrase = err }
 
-marketList'
-   :: forall venue.
-   ( KnownSymbol venue
-   , DataSource (MarketList venue)
-   )
-   => HTTP.Manager
-   -> Proxy venue
-   -> IO (Either Req.ServantError (MarketList venue))
-marketList' man _ = fetch man
-
-marketList :: HTTP.Manager -> AnyVenue -> IO (Either Req.ServantError [AnyMarket])
-marketList man (AnyVenue p) = do
-   resE <- marketList' man p
-   let getMarket (MarketList a) = a
-   return $ map AnyMarket . getMarket <$> resE
-

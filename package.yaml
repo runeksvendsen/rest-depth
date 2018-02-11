@@ -64,16 +64,16 @@ dependencies:
 - http-types
 - mtl
 - unordered-containers
+- wai-extra
 
 library:
   source-dirs: src
 
 executables:
-  rest-depth-exe:
+  rest-depth:
     main:                Main.hs
     source-dirs:
     - app
-#    - src
     ghc-options:
     - -threaded
     - -rtsopts

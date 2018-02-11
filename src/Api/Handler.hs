@@ -30,7 +30,7 @@ slipSell :: HTTP.Manager
          -> SS.Handler SlippageInfo
 slipSell man venueName market slip =
    withMarket venueName market $ \(AnyMarket market) -> do
-      AnyBook ob <- throwErr =<< liftIO (fetchFromMarket man market)
+      AnyBook ob <- throwErr =<< liftIO (fetchMarketBook man market)
       return $ fromMatchRes (slippageSell ob (realToFrac slip))
 
 slipBuy :: HTTP.Manager
@@ -40,7 +40,7 @@ slipBuy :: HTTP.Manager
         -> SS.Handler SlippageInfo
 slipBuy man venueName market slip =
    withMarket venueName market $ \(AnyMarket market) -> do
-      AnyBook ob <- throwErr =<< liftIO (fetchFromMarket man market)
+      AnyBook ob <- throwErr =<< liftIO (fetchMarketBook man market)
       return $ fromMatchRes (slippageBuy ob (realToFrac slip))
 
 
