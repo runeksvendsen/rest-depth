@@ -31,7 +31,7 @@ Parameters:
 * **venue** (a venue name returned by `list_venues`)
 * **market** (market name returned by `list_markets`)
 * **slippage** (target slippage, in percent)
-  
+
 Example response:
 ```javascript
 {"orders_exhausted":false,"slippage_percent":1,"init_price":8288,"base_qty":398.7980059267673,"quote_qty":3272185.494389837}
