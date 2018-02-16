@@ -64,6 +64,7 @@ dependencies:
 - mtl
 - unordered-containers
 - wai-extra
+- transformers
 
 library:
   source-dirs: src

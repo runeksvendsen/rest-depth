@@ -3,6 +3,7 @@ module Api.Handler where
 import RPrelude
 import Api.Util
 import Markets
+import Markets.Parse
 import Fetch
 import OrderBook
 import OrderBook.Output
@@ -21,7 +22,7 @@ listMarkets
    -> SS.Handler [AnyMarket]
 listMarkets man venueName =
    withVenue venueName $ \venue ->
-      throwErr =<< liftIO (marketList man venue)
+      throwErr =<< liftIO (runExceptT $ marketList man venue)
 
 slipSell :: HTTP.Manager
          -> Text
