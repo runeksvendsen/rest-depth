@@ -1,7 +1,6 @@
 module Main where
 
 import MyPrelude
-import qualified Api.Docs
 import qualified Api.Handler as Handler
 import qualified Api
 import qualified Servant.Server as SS
@@ -11,8 +10,6 @@ import qualified Network.Wai.Handler.Warp             as Warp
 import qualified Network.HTTP.Client                  as HTTP
 import qualified Network.Wai.Middleware.RequestLogger as RL
 import qualified Control.Logging                      as Log
--- TMP
-import qualified Data.Aeson as Json
 
 
 server :: HTTP.Manager -> SS.Server Api.Api
