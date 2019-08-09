@@ -1,11 +1,10 @@
 module Markets.Parse where
 
-import CPrelude
-import Markets.Types
-import Fetch.MarketBook
+import RPrelude
+import CryptoVenues.Types.Market
+import CryptoVenues.Fetch
 import OrderBook.Types
-import Venue.Types
-import qualified Servant.Common.BaseUrl as S
+import qualified CryptoVenues.Venues   as CryptoVenues
 import qualified Servant.Client        as SC
 import           Servant.API
 import qualified Data.Aeson            as Json

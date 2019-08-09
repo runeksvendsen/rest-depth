@@ -1,6 +1,6 @@
 --module Spec where
 
-import CPrelude
+import RPrelude
 
 import qualified Spec.MarketString
 import Markets.Parse                      (fromString, toString)

@@ -11,10 +11,9 @@ module Api
 ) where
 
 import RPrelude
-import Markets.Types
-import Venue.Types
+import CryptoVenues.Fetch
+import CryptoVenues.Types.Market
 import OrderBook.Output
-import Fetch.MarketBook
 import Servant.API
 
 

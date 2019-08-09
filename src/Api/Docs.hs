@@ -8,7 +8,7 @@ module Api.Docs where
 
 import RPrelude
 import Api
-import Venues
+import CryptoVenues.Venues
 import Data.ByteString.Lazy (ByteString)
 import Data.Proxy
 import Data.Text.Lazy.Encoding (encodeUtf8)
@@ -66,4 +66,3 @@ instance ToSample SlippageInfo where
         )
       ]
 -}
-

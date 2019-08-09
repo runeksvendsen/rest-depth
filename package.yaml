@@ -37,13 +37,13 @@ default-extensions:
 - TypeOperators
 
 dependencies:
-- base            >= 4.7    && < 5
+- base
 - protolude
 - orderbook
 - crypto-venues
-- safe-money      >= 0.4.1  && < 0.5
-- servant         >= 0.11   && < 0.12
-- servant-client  >= 0.11   && < 0.12
+- safe-money
+- servant
+- servant-client
 - servant-server
 - servant-docs
 - aeson
@@ -81,6 +81,7 @@ executables:
     dependencies:
     - rest-depth
     - warp
+    - logging
 
 tests:
   rest-depth-test:

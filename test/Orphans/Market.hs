@@ -1,9 +1,9 @@
 module Orphans.Market where
 
-import CPrelude
-import Markets.Types
-import Fetch
-import Venue.Types
+import RPrelude
+import CryptoVenues.Types.Market
+import CryptoVenues.Fetch
+import CryptoVenues.Venues
 import qualified Test.SmallCheck.Series as SS
 import Data.Ord
 import Data.Aeson
@@ -16,9 +16,10 @@ testVenue = AnyVenue (Proxy :: Proxy TestVenueName)
 
 instance MarketBook TestVenueName where
    marketBook = undefined
+   rateLimit = undefined
 
-instance DataSource (MarketList TestVenueName) where
-   dataSrc = undefined
+instance EnumMarkets TestVenueName where
+   allMarkets = undefined
 
 instance FromJSON (MarketList TestVenueName) where
    parseJSON = undefined

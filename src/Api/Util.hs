@@ -1,31 +1,34 @@
 module Api.Util where
 
 import RPrelude
-import Venues
+import CryptoVenues.Venues
 import OrderBook
-import Markets
-import Fetch
+import CryptoVenues.Fetch
+import qualified CryptoVenues.Types.Error as Error
 import qualified Network.HTTP.Client   as HTTP
-import qualified Servant.Common.Req    as Req
+import qualified Servant.Client        as Req
 import qualified Servant.Server        as SS
 import qualified Network.HTTP.Types.Status as HTTP
 
 
 -- Util
-throwErr :: Either Req.ServantError a -> SS.Handler a
-throwErr = either (throwError . toServantErr) return
+throwErr :: Either Error.Error a -> SS.Handler a
+throwErr = either (throwError . toServantErr . Error.eFetchErr) return
 
--- | Convert 'Servant.Client' response status error to 'Servant.Server' throwable error
-toServantErr :: Req.ServantError -> SS.ServantErr
-toServantErr Req.FailureResponse{..} =
+-- | Convert crypto-venues 'Error.Error' to 'Servant.Server' throwable error
+toServantErr :: Error.FetchErr -> SS.ServantErr
+toServantErr Error.TooManyRequests =
    SS.ServantErr
-      { errHTTPCode = HTTP.statusCode responseStatus
-      , errReasonPhrase = "API failure response"
-      , errBody = responseBody
+      { errHTTPCode = 429
+      , errReasonPhrase = "Too many requests"
+      , errBody = ""
       , errHeaders = []
       }
-toServantErr Req.DecodeFailure{..} = let err = "Decode error: " ++ decodeError in
-   SS.err500 { SS.errBody = toS err, SS.errReasonPhrase = err }
-toServantErr ex = let err = show ex in
+toServantErr err@(Error.ConnectionErr _) = simple500Error (show err)
+toServantErr err@(Error.EndpointErr _) = simple500Error (show err)
+toServantErr err@(Error.InternalErr _) = simple500Error (show err)
+
+simple500Error :: String -> SS.ServantErr
+simple500Error err =
    SS.err500 { SS.errBody = toS err, SS.errReasonPhrase = err }
 

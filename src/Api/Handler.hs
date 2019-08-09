@@ -2,16 +2,18 @@ module Api.Handler where
 
 import RPrelude
 import Api.Util
-import Markets
+import CryptoVenues.Venues
+import CryptoVenues.Fetch
+import qualified CryptoVenues.Types.AppM    as AppM
 import Markets.Parse
-import Fetch
 import OrderBook
 import OrderBook.Output
-import Venues
 import qualified Network.HTTP.Client   as HTTP
 import qualified Servant.Server        as SS
 import Control.Monad.Error.Class       (throwError)
 
+
+maxRetries = 5
 
 listVenues :: SS.Handler [AnyVenue]
 listVenues = return allVenues
@@ -21,8 +23,9 @@ listMarkets
    -> Text
    -> SS.Handler [AnyMarket]
 listMarkets man venueName =
-   withVenue venueName $ \venue ->
-      throwErr =<< liftIO (runExceptT $ marketList man venue)
+   withVenue venueName $ \venue -> do
+      let marketListIO = AppM.runAppM man maxRetries $ marketListAny venue
+      throwErr =<< liftIO marketListIO
 
 slipSell :: HTTP.Manager
          -> Text
@@ -31,7 +34,8 @@ slipSell :: HTTP.Manager
          -> SS.Handler SlippageInfo
 slipSell man venueName market slip =
    withMarket venueName market $ \(AnyMarket market) -> do
-      AnyBook ob <- throwErr =<< liftIO (fetchMarketBook man market)
+      let bookFetchIO = AppM.runAppM man maxRetries $ fetchMarketBook market
+      AnyBook ob <- throwErr =<< liftIO bookFetchIO
       return $ fromMatchRes (slippageSell ob (realToFrac slip))
 
 slipBuy :: HTTP.Manager
@@ -41,7 +45,8 @@ slipBuy :: HTTP.Manager
         -> SS.Handler SlippageInfo
 slipBuy man venueName market slip =
    withMarket venueName market $ \(AnyMarket market) -> do
-      AnyBook ob <- throwErr =<< liftIO (fetchMarketBook man market)
+      let bookFetchIO = AppM.runAppM man maxRetries $ fetchMarketBook market
+      AnyBook ob <- throwErr =<< liftIO bookFetchIO
       return $ fromMatchRes (slippageBuy ob (realToFrac slip))
 
 

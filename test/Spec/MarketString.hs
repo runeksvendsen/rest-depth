@@ -1,8 +1,8 @@
 module Spec.MarketString where
 
-import CPrelude
+import RPrelude
 import Markets.Parse          (fromString, toString)
-import Fetch.MarketBook
+import CryptoVenues.Fetch.MarketBook
 import Orphans.Market
 
 import Test.Hspec

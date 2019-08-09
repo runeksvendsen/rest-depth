@@ -25,8 +25,8 @@ fromMatchRes
 fromMatchRes mr@MatchResult{..} = SlippageInfo
    { base_qty           = fromRational $ toRational resBaseQty
    , quote_qty          = fromRational $ toRational resQuoteQty
-   , init_price         = fromRational . Money.fromExchangeRate . oPrice <$> lastMay resOrders
-   , avg_price          = fromRational . Money.fromExchangeRate <$> executionPrice mr
+   , init_price         = fromRational . Money.exchangeRateToRational . oPrice <$> lastMay resOrders
+   , avg_price          = fromRational . Money.exchangeRateToRational <$> executionPrice mr
    , slippage_percent   = fromRational <$> slippage mr
    , orders_exhausted   = resRes == InsufficientDepth
    }

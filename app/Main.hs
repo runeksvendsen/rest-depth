@@ -10,6 +10,7 @@ import qualified Network.HTTP.Client.TLS              as HTTPS
 import qualified Network.Wai.Handler.Warp             as Warp
 import qualified Network.HTTP.Client                  as HTTP
 import qualified Network.Wai.Middleware.RequestLogger as RL
+import qualified Control.Logging                      as Log
 -- TMP
 import qualified Data.Aeson as Json
 
@@ -26,4 +27,6 @@ app man = SS.serve (Proxy :: Proxy Api.Api) (server man)
 main :: IO ()
 main = do
    man <- HTTPS.newTlsManager
-   Warp.run 8080 (RL.logStdoutDev $ app man)
+   Log.setLogLevel Log.LevelError -- TODO: CLI argument
+   Log.withStderrLogging $
+      Warp.run 8080 (RL.logStdoutDev $ app man)

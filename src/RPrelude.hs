@@ -1,6 +1,5 @@
 module RPrelude
 ( module Protolude
-, module Safe
 , module TypeLits
 , module Prelude
 , module EitherT
@@ -33,7 +32,7 @@ import Control.Monad.Fail
 import           Data.Vector  (Vector)
 import Text.Printf
 import Data.EitherR (fmapL)
-import qualified Servant.Common.Req    as Req
+import qualified Servant.Client    as Req
 
 sameSym :: (KnownSymbol a, KnownSymbol b) => Proxy a -> Proxy b -> Bool
 sameSym a b = isJust (sameSymbol a b)
