@@ -10,7 +10,7 @@ packages:
   extra-dep: true
 - location:
     git: https://github.com/runeksvendsen/crypto-venues.git
-    commit: 420e71d8834ea2b5d9603eec74bd9df2667cb9d6
+    commit: 889b41c4ae2ccbf10d9254f41a7d0f1882d117eb
   extra-dep: true
 
 # Dependency packages to be pulled from upstream that are not in the resolver
