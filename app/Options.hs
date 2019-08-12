@@ -24,10 +24,9 @@ withOptions f = do
     setLogLevel = Log.setLogLevel . logLevel
 
 opts :: ParserInfo Options
-opts = info options $
+opts = info (helper <*> options) $
      fullDesc
-  <> progDesc "Analyze cryptocurrency order book depth"
-  <> header "Cryptocurrency order book depth"
+  <> header "Analyze cryptocurrency order book depth for multiple exchanges through a unified HTTP API"
 
 options :: Parser Options
 options = Options
@@ -40,6 +39,7 @@ listenPortOpt = option auto $
      long "port"
   <> short 'p'
   <> value 8080
+  <> showDefault
   <> metavar "LISTEN_PORT"
   <> help "Port to listen on for incoming connections"
 
@@ -48,6 +48,7 @@ numMaxRetriesOpt = option auto $
      long "max-retries"
   <> short 'r'
   <> value 5
+  <> showDefault
   <> metavar "MAX_RETRIES"
   <> help "Maximum number of request retries before failing"
 
