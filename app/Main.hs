@@ -12,16 +12,19 @@ import qualified Network.HTTP.Client                  as HTTP
 import qualified Network.Wai.Middleware.RequestLogger as RL
 
 
-server :: HTTP.Manager -> SS.Server Api.Api
-server man = Handler.listVenues
-   :<|> Handler.listMarkets man
-   :<|> Handler.slipSell man
-   :<|> Handler.slipBuy man
+server :: HTTP.Manager -> Word -> SS.Server Api.Api
+server man maxRetries = Handler.listVenues
+   :<|> mkHandler Handler.listMarkets
+   :<|> mkHandler Handler.slipSell
+   :<|> mkHandler Handler.slipBuy
+  where
+   mkHandler handler = handler man maxRetries
 
-app :: HTTP.Manager -> SS.Application
-app man = SS.serve (Proxy :: Proxy Api.Api) (server man)
+app :: HTTP.Manager -> Word -> SS.Application
+app man maxRetries = SS.serve (Proxy :: Proxy Api.Api) (server man maxRetries)
 
 main :: IO ()
 main = Options.withOptions $ \options -> do
    man <- HTTPS.newTlsManager
-   Warp.run (fromIntegral $ Options.listenPort options) (RL.logStdoutDev $ app man)
+   let maxRetries = Options.numMaxRetries options
+   Warp.run (fromIntegral $ Options.listenPort options) (RL.logStdoutDev $ app man maxRetries)

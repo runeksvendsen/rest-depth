@@ -13,37 +13,38 @@ import qualified Servant.Server        as SS
 import Control.Monad.Error.Class       (throwError)
 
 
-maxRetries = 5
-
 listVenues :: SS.Handler [AnyVenue]
 listVenues = return allVenues
 
 listMarkets
    :: HTTP.Manager
+   -> Word
    -> Text
    -> SS.Handler [AnyMarket]
-listMarkets man venueName =
+listMarkets man maxRetries venueName =
    withVenue venueName $ \venue -> do
       let marketListIO = AppM.runAppM man maxRetries $ marketListAny venue
       throwErr =<< liftIO marketListIO
 
 slipSell :: HTTP.Manager
+         -> Word
          -> Text
          -> Text
          -> Double
          -> SS.Handler SlippageInfo
-slipSell man venueName market slip =
+slipSell man maxRetries venueName market slip =
    withMarket venueName market $ \(AnyMarket market) -> do
       let bookFetchIO = AppM.runAppM man maxRetries $ fetchMarketBook market
       AnyBook ob <- throwErr =<< liftIO bookFetchIO
       return $ fromMatchRes (slippageSell ob (realToFrac slip))
 
 slipBuy :: HTTP.Manager
+        -> Word
         -> Text
         -> Text
         -> Double
         -> SS.Handler SlippageInfo
-slipBuy man venueName market slip =
+slipBuy man maxRetries venueName market slip =
    withMarket venueName market $ \(AnyMarket market) -> do
       let bookFetchIO = AppM.runAppM man maxRetries $ fetchMarketBook market
       AnyBook ob <- throwErr =<< liftIO bookFetchIO
