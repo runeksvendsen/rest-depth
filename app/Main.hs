@@ -10,7 +10,6 @@ import qualified Network.HTTP.Client.TLS              as HTTPS
 import qualified Network.Wai.Handler.Warp             as Warp
 import qualified Network.HTTP.Client                  as HTTP
 import qualified Network.Wai.Middleware.RequestLogger as RL
-import qualified Control.Logging                      as Log
 
 
 server :: HTTP.Manager -> SS.Server Api.Api
