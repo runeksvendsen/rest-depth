@@ -1,6 +1,8 @@
+[![CircleCI](https://circleci.com/gh/runeksvendsen/rest-depth.svg?style=svg)](https://circleci.com/gh/runeksvendsen/rest-depth)
+
 # Cryptocurrency market depth REST server
 
-RESTful HTTP server that can be used to perform various queries on several cryptocurrency markets.
+Analyze cryptocurrency order book depth for multiple exchanges through a unified HTTP API.
 
 ## Building
 
