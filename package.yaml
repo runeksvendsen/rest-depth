@@ -85,6 +85,7 @@ executables:
     - rest-depth
     - warp
     - logging
+    - optparse-applicative
 
 tests:
   rest-depth-test:

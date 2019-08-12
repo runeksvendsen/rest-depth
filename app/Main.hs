@@ -1,6 +1,7 @@
 module Main where
 
 import MyPrelude
+import qualified Options
 import qualified Api.Handler as Handler
 import qualified Api
 import qualified Servant.Server as SS
@@ -22,8 +23,6 @@ app :: HTTP.Manager -> SS.Application
 app man = SS.serve (Proxy :: Proxy Api.Api) (server man)
 
 main :: IO ()
-main = do
+main = Options.withOptions $ \options -> do
    man <- HTTPS.newTlsManager
-   Log.setLogLevel Log.LevelError -- TODO: CLI argument
-   Log.withStderrLogging $
-      Warp.run 8080 (RL.logStdoutDev $ app man)
+   Warp.run (fromIntegral $ Options.listenPort options) (RL.logStdoutDev $ app man)
