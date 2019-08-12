@@ -16,7 +16,7 @@ scDepth = 4
 main = do
    let runHspec = hspecWith defaultConfig { configSmallCheckDepth = scDepth }
    runHspec $ Spec.MarketString.spec
-
+   defaultMain properties
 
 properties :: TestTree
 properties = localOption (SC.SmallCheckDepth scDepth) $
