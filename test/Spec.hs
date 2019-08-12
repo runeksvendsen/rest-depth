@@ -1,5 +1,3 @@
---module Spec where
-
 import RPrelude
 
 import qualified Spec.MarketString
@@ -11,7 +9,6 @@ import Test.Hspec             as HS
 import Test.Hspec.Runner
 import qualified Test.SmallCheck.Series as SS
 import Orphans.Market
-import qualified Network.HTTP.Client.TLS as HTTPS
 
 
 scDepth = 4
@@ -34,4 +31,3 @@ scProps = testGroup "(checked by SmallCheck)"
       \anyMarket ->
          fromString testVenue (toS $ toString anyMarket) `shouldBe` Just anyMarket
   ]
-

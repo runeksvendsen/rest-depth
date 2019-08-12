@@ -2,13 +2,9 @@ module Spec.MarketString where
 
 import RPrelude
 import Markets.Parse          (fromString, toString)
-import CryptoVenues.Fetch.MarketBook
 import Orphans.Market
 
 import Test.Hspec
-import qualified Money
-import qualified Test.QuickCheck    as QC
-import qualified Text.Show.Pretty   as P
 import qualified Test.Hspec.SmallCheck as SC
 import qualified Test.SmallCheck.Series as SS
 

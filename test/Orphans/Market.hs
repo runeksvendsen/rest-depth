@@ -3,9 +3,7 @@ module Orphans.Market where
 import RPrelude
 import CryptoVenues.Types.Market
 import CryptoVenues.Fetch
-import CryptoVenues.Venues
 import qualified Test.SmallCheck.Series as SS
-import Data.Ord
 import Data.Aeson
 
 
