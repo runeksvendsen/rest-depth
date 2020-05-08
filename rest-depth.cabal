@@ -1,0 +1,163 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 89dabcd9bcbbc592809c1910f7a586c25f33011243c2563fd266ca001e3b9403
+
+name:           rest-depth
+version:        0.1.0.0
+synopsis:       Short description of your package
+description:    Please see the README on Github at <https://github.com/githubuser/rest-depth#readme>
+homepage:       https://github.com/runeksvendsen/rest-depth#readme
+bug-reports:    https://github.com/runeksvendsen/rest-depth/issues
+author:         Rune K. Svendsen
+maintainer:     example@example.com
+copyright:      2017 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/runeksvendsen/rest-depth
+
+library
+  exposed-modules:
+      Api
+      Api.Handler
+      Api.Util
+      Markets.Parse
+      OrderBook.Output
+      RPrelude
+  other-modules:
+      Paths_rest_depth
+  hs-source-dirs:
+      src
+  default-extensions: StrictData BangPatterns NoImplicitPrelude ScopedTypeVariables MultiParamTypeClasses ScopedTypeVariables OverloadedStrings KindSignatures DataKinds FlexibleInstances DeriveGeneric RecordWildCards DuplicateRecordFields FlexibleContexts DeriveFunctor TypeOperators
+  ghc-options: -Wall
+  build-depends:
+      aeson
+    , base
+    , bytestring
+    , crypto-venues
+    , errors
+    , http-client
+    , http-client-tls
+    , http-types
+    , json-schema
+    , mtl
+    , orderbook
+    , pretty-show
+    , protolude
+    , safe
+    , safe-money
+    , scientific
+    , servant
+    , servant-client
+    , servant-docs
+    , servant-server
+    , template-haskell
+    , text
+    , transformers
+    , typelits-witnesses
+    , unordered-containers
+    , vector
+    , wai-extra
+  default-language: Haskell2010
+
+executable rest-depth
+  main-is: Main.hs
+  other-modules:
+      Options
+      Paths_rest_depth
+  hs-source-dirs:
+      app
+  default-extensions: StrictData BangPatterns NoImplicitPrelude ScopedTypeVariables MultiParamTypeClasses ScopedTypeVariables OverloadedStrings KindSignatures DataKinds FlexibleInstances DeriveGeneric RecordWildCards DuplicateRecordFields FlexibleContexts DeriveFunctor TypeOperators
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base
+    , bytestring
+    , crypto-venues
+    , errors
+    , http-client
+    , http-client-tls
+    , http-types
+    , json-schema
+    , logging
+    , mtl
+    , optparse-applicative
+    , orderbook
+    , pretty-show
+    , protolude
+    , rest-depth
+    , safe
+    , safe-money
+    , scientific
+    , servant
+    , servant-client
+    , servant-docs
+    , servant-server
+    , template-haskell
+    , text
+    , transformers
+    , typelits-witnesses
+    , unordered-containers
+    , vector
+    , wai-extra
+    , warp
+  default-language: Haskell2010
+
+test-suite rest-depth-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Orphans.Market
+      Spec.MarketString
+      Paths_rest_depth
+  hs-source-dirs:
+      test
+  default-extensions: StrictData BangPatterns NoImplicitPrelude ScopedTypeVariables MultiParamTypeClasses ScopedTypeVariables OverloadedStrings KindSignatures DataKinds FlexibleInstances DeriveGeneric RecordWildCards DuplicateRecordFields FlexibleContexts DeriveFunctor TypeOperators
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      HUnit
+    , QuickCheck
+    , aeson
+    , base
+    , bytestring
+    , crypto-venues
+    , errors
+    , hspec
+    , hspec-smallcheck
+    , http-client
+    , http-client-tls
+    , http-types
+    , json-schema
+    , mtl
+    , orderbook
+    , pretty-show
+    , protolude
+    , rest-depth
+    , safe
+    , safe-money
+    , scientific
+    , servant
+    , servant-client
+    , servant-docs
+    , servant-server
+    , smallcheck
+    , tasty
+    , tasty-quickcheck
+    , tasty-smallcheck
+    , template-haskell
+    , text
+    , transformers
+    , typelits-witnesses
+    , unordered-containers
+    , vector
+    , wai-extra
+  default-language: Haskell2010
