@@ -1,21 +1,12 @@
 resolver: lts-12.14
 
-# non-dependency (i.e. a user package), and its test suites and benchmarks
-# will not be run. This is useful for tweaking upstream packages.
-packages:
-- .
-- location:
-    git: https://github.com/runeksvendsen/orderbook.git
-    commit: 1cfe64aeb59ddebcfb0b8353f82457d16766fa36
-  extra-dep: true
-- location:
-    git: https://github.com/runeksvendsen/crypto-venues.git
-    commit: 889b41c4ae2ccbf10d9254f41a7d0f1882d117eb
-  extra-dep: true
-
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
 extra-deps:
+- git: https://github.com/runeksvendsen/orderbook.git
+  commit: 1cfe64aeb59ddebcfb0b8353f82457d16766fa36
+- git: https://github.com/runeksvendsen/crypto-venues.git
+  commit: 51ca4d5fa55c929ea0b7d279575f6690e62ed185
 - logging-3.0.5@sha256:88096d3124fce9a19af3720f751e1a354d866ed5030d2e5197238d2277cdb2f2
 - rate-limit-1.4.0
 - safe-money-0.6
