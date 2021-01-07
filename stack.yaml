@@ -14,6 +14,7 @@ extra-deps:
 ### BEGIN safe-money deps
 - serialise-0.2.1.0@sha256:8d6051f64c6ebfaf705195dd0b8dfb667617f2e674b290ed2e44985009e4f951
 ### END safe-money deps
+- retry-0.8.1.2@sha256:b81e7d7e5f068da82349a3c157a2ab25d399c9ca4841d1b6e54e8c4050cb065f,2189
 
 #flags:
 #  safe-money:
