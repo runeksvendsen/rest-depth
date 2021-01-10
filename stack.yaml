@@ -1,4 +1,4 @@
-resolver: lts-12.14
+resolver: lts-14.0
 
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
@@ -7,40 +7,9 @@ extra-deps:
   commit: 1cfe64aeb59ddebcfb0b8353f82457d16766fa36
 - git: https://github.com/runeksvendsen/crypto-venues.git
   commit: 51ca4d5fa55c929ea0b7d279575f6690e62ed185
-- logging-3.0.5@sha256:88096d3124fce9a19af3720f751e1a354d866ed5030d2e5197238d2277cdb2f2
-- rate-limit-1.4.0
-- safe-money-0.6
-- time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1
-### BEGIN safe-money deps
-- serialise-0.2.1.0@sha256:8d6051f64c6ebfaf705195dd0b8dfb667617f2e674b290ed2e44985009e4f951
-### END safe-money deps
+- logging-3.0.5@sha256:88096d3124fce9a19af3720f751e1a354d866ed5030d2e5197238d2277cdb2f2,2374
+- rate-limit-1.4.2@sha256:78b935d96fe82b4d059908557e2c904925e99fcd465e2b4dfd65b8d2930163a2,930
+- time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1,928
+- generic-aeson-0.2.0.11@sha256:4ba65c76be54c87839926c13cf5216f50e4d6403808088b87f54677da95cad90,1123
+- json-schema-0.7.4.2@sha256:6f1c54247006f9d55a9d656a9e83af4b06cf6b49cebdfa79aec092f21181955f,2347
 - retry-0.8.1.2@sha256:b81e7d7e5f068da82349a3c157a2ab25d399c9ca4841d1b6e54e8c4050cb065f,2189
-
-#flags:
-#  safe-money:
-#    xmlbf: false
-#    serialise: false
-
-# Override default flag values for local packages and extra-deps
-flags: {}
-
-# Extra package databases containing global packages
-extra-package-dbs: []
-
-# Control whether we use the GHC we find on the path
-# system-ghc: true
-#
-# Require a specific version of stack, using version ranges
-# require-stack-version: -any # Default
-# require-stack-version: ">=1.5"
-#
-# Override the architecture used by stack, especially useful on Windows
-# arch: i386
-# arch: x86_64
-#
-# Extra directories used by stack for building
-# extra-include-dirs: [/path/to/dir]
-# extra-lib-dirs: [/path/to/dir]
-#
-# Allow a newer minor version of GHC than the snapshot specifies
-# compiler-check: newer-minor

@@ -21,35 +21,35 @@ packages:
       size: 264
       sha256: 35c4c46138a30e516c2f27dfc51a993e7d7946af0de1a826f18b71a854c2da21
   original:
-    hackage: logging-3.0.5@sha256:88096d3124fce9a19af3720f751e1a354d866ed5030d2e5197238d2277cdb2f2
+    hackage: logging-3.0.5@sha256:88096d3124fce9a19af3720f751e1a354d866ed5030d2e5197238d2277cdb2f2,2374
 - completed:
-    hackage: rate-limit-1.4.0@sha256:f7f908e6138633e581c490cfc309e6a390541e0c57087d3da52db45e50cde146,943
+    hackage: rate-limit-1.4.2@sha256:78b935d96fe82b4d059908557e2c904925e99fcd465e2b4dfd65b8d2930163a2,930
     pantry-tree:
-      size: 214
-      sha256: de0e200f99c736ddc8d1695420062eda42022ee287de36420aea4a14399155b5
+      size: 168
+      sha256: 930207a8350478df4e8dcf6957af8e3ac952282002f204eea3aac6baa0e9b975
   original:
-    hackage: rate-limit-1.4.0
-- completed:
-    hackage: safe-money-0.6@sha256:8da43268c8b7818926efc9d92de2d511222d7dcf918583b308bea99cf04fa154,3554
-    pantry-tree:
-      size: 427
-      sha256: 90d22cd2b3b2746fd86decb874b4614b18080521d8180650154ad1b29b4709d4
-  original:
-    hackage: safe-money-0.6
+    hackage: rate-limit-1.4.2@sha256:78b935d96fe82b4d059908557e2c904925e99fcd465e2b4dfd65b8d2930163a2,930
 - completed:
     hackage: time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1,928
     pantry-tree:
       size: 212
       sha256: 9b516d4195fcea22cd1f4335cfe210e88deca397ba7dacc494d5a2feb69e1af8
   original:
-    hackage: time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1
+    hackage: time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1,928
 - completed:
-    hackage: serialise-0.2.1.0@sha256:8d6051f64c6ebfaf705195dd0b8dfb667617f2e674b290ed2e44985009e4f951,8242
+    hackage: generic-aeson-0.2.0.11@sha256:4ba65c76be54c87839926c13cf5216f50e4d6403808088b87f54677da95cad90,1123
     pantry-tree:
-      size: 4056
-      sha256: 26f4c5d503a78001152b73868bd66c5b3479d9b62bb0134c6557815ced34402a
+      size: 475
+      sha256: 9540dccab1b5fffb502a7dd1318197345ea0f8f7054cf3ba859aa4d494fea8cd
   original:
-    hackage: serialise-0.2.1.0@sha256:8d6051f64c6ebfaf705195dd0b8dfb667617f2e674b290ed2e44985009e4f951
+    hackage: generic-aeson-0.2.0.11@sha256:4ba65c76be54c87839926c13cf5216f50e4d6403808088b87f54677da95cad90,1123
+- completed:
+    hackage: json-schema-0.7.4.2@sha256:6f1c54247006f9d55a9d656a9e83af4b06cf6b49cebdfa79aec092f21181955f,2347
+    pantry-tree:
+      size: 849
+      sha256: 907363d44a93e02be69fd69bdee6e8a1df79ccd904f560fc2fecee0020cb5605
+  original:
+    hackage: json-schema-0.7.4.2@sha256:6f1c54247006f9d55a9d656a9e83af4b06cf6b49cebdfa79aec092f21181955f,2347
 - completed:
     hackage: retry-0.8.1.2@sha256:b81e7d7e5f068da82349a3c157a2ab25d399c9ca4841d1b6e54e8c4050cb065f,2189
     pantry-tree:
@@ -59,7 +59,7 @@ packages:
     hackage: retry-0.8.1.2@sha256:b81e7d7e5f068da82349a3c157a2ab25d399c9ca4841d1b6e54e8c4050cb065f,2189
 snapshots:
 - completed:
-    size: 504771
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/12/14.yaml
-    sha256: 3cbd6c83316dd5e2bbc756dc7a2a4e31a31859c3f8b5c720efb6850b08e42649
-  original: lts-12.14
+    size: 523443
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/0.yaml
+    sha256: 283773e7120f5446d961eab35ea95c9af9c24187cc178537bd29273200a05171
+  original: lts-14.0
