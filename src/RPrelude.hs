@@ -37,7 +37,7 @@ import qualified Servant.Client    as Req
 sameSym :: (KnownSymbol a, KnownSymbol b) => Proxy a -> Proxy b -> Bool
 sameSym a b = isJust (sameSymbol a b)
 
-failOnErr :: forall a venue. KnownSymbol venue => Either Req.ServantError (a venue) -> a venue
+failOnErr :: forall a venue. KnownSymbol venue => Either Req.ClientError (a venue) -> a venue
 failOnErr = either (error . errMsg . show) id
    where errMsg str = symbolVal (Proxy :: Proxy venue) <> ": " <> str
 
