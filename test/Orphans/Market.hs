@@ -3,6 +3,7 @@ module Orphans.Market where
 import RPrelude
 import CryptoVenues.Types.Market
 import CryptoVenues.Fetch
+import qualified CryptoVenues.Types.MarketSymbol as CryptoVenues
 import qualified Test.SmallCheck.Series as SS
 import Data.Aeson
 
@@ -41,5 +42,8 @@ instance Monad m => SS.Serial m AnyMarket where
          SS.NonEmpty base  :: SS.NonEmpty Char <- SS.series
          SS.NonEmpty quote :: SS.NonEmpty Char <- SS.series
          HyphenStr sym <- SS.series
-         let market = Market (toS base) (toS quote) (toS sym) :: Market TestVenueName
+         let market = Market
+               (toS base)
+               (toS quote)
+               (CryptoVenues.toMarketSymbol $ toS sym) :: Market TestVenueName
          return (AnyMarket market)

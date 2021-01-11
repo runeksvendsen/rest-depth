@@ -3,12 +3,8 @@ module Markets.Parse where
 import RPrelude
 import CryptoVenues.Types.Market
 import CryptoVenues.Fetch
-import OrderBook.Types
-import qualified CryptoVenues.Venues   as CryptoVenues
-import qualified Servant.Client        as SC
-import           Servant.API
+import qualified CryptoVenues.Types.MarketSymbol as CryptoVenues
 import qualified Data.Aeson            as Json
-import qualified Network.HTTP.Client   as HTTP
 
 
 -- | E.g. "BTC-USD-tBTCUSD".
@@ -19,7 +15,7 @@ toString
 toString (AnyMarket Market{..}) =
    printf "%s-%s-%s" (toS miBase :: String)
                      (toS miQuote :: String)
-                     (toS miApiSymbol :: String)
+                     miApiSymbol
 
 instance Json.ToJSON AnyMarket where
    toJSON am = Json.toJSON (toS $ toString am :: Text)
@@ -32,7 +28,8 @@ fromString anyVenue marketName =
    case anyVenue of
       AnyVenue (venue :: Proxy venue) -> do
          (base,quote,apiSymbol) <- parseMarketString marketName
-         Just $ AnyMarket (Market (toS base) (toS quote) (toS apiSymbol) :: Market venue)
+         Just $ AnyMarket
+            (Market (toS base) (toS quote) (CryptoVenues.toMarketSymbol $ toS apiSymbol) :: Market venue)
 
 parseMarketString :: Text -> Maybe (String,String,String)
 parseMarketString marketStr = do
