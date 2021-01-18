@@ -8,7 +8,7 @@ extra-deps:
 - git: https://github.com/runeksvendsen/orderbook.git
   commit: 1cfe64aeb59ddebcfb0b8353f82457d16766fa36
 - git: https://github.com/runeksvendsen/crypto-venues.git
-  commit: 889b41c4ae2ccbf10d9254f41a7d0f1882d117eb
+  commit: 2f7f1fa907383786a36f8b2d6e13c610668640ef
 - logging-3.0.5@sha256:88096d3124fce9a19af3720f751e1a354d866ed5030d2e5197238d2277cdb2f2,2374
 - rate-limit-1.4.2@sha256:78b935d96fe82b4d059908557e2c904925e99fcd465e2b4dfd65b8d2930163a2,930
 - time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1,928
